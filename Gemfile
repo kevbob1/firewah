@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Padrino supports Ruby version 2.2.2 and later
-# ruby '2.4.1'
+ruby '2.4.1'
 
 # Distribute your app as a gem
 # gemspec
@@ -9,6 +9,7 @@ source 'https://rubygems.org'
 # Server requirements
 # gem 'thin' # or mongrel
 # gem 'trinidad', :platform => 'jruby'
+gem 'puma'
 
 # Optional JSON codec (faster performance)
 # gem 'oj'
@@ -35,3 +36,5 @@ gem 'padrino', '0.14.4'
 # %w(core support gen helpers cache mailer admin).each do |g|
 #   gem 'padrino-' + g, '0.14.4'
 # end
+
+gem 'sinatra-contrib'
