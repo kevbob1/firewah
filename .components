@@ -1,0 +1,9 @@
+---
+:orm: none
+:test: testunit
+:mock: mocha
+:script: jquery
+:renderer: erb
+:stylesheet: scss
+:namespace: Firewah
+:migration_format: number
