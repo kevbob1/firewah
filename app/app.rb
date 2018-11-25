@@ -3,6 +3,9 @@ module Firewah
     register ScssInitializer
     register Padrino::Mailer
     register Padrino::Helpers
+
+    helpers Sinatra::JSON
+
     enable :sessions
 
     ##
