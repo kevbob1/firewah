@@ -4,19 +4,9 @@ Firewah::App.controllers :home do
      render 'index'
    end
 
-  # get :sample, :map => '/sample/url', :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
 
-  # get :foo, :with => :id do
-  #   "Maps to url '/foo/#{params[:id]}'"
-  # end
+   put :enable, :map => '/' do
 
-  # get '/example' do
-  #   'Hello world!'
-  # end
-  
 
+  end
 end

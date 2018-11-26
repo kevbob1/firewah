@@ -8,6 +8,7 @@ module Firewah
 
     enable :sessions
 
+
     ##
     # Caching support.
     #

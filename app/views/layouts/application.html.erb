@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Railsdocker</title>
+    <title>Firewah</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag  'bootstrap.min', 'bootstrap-theme.min',  'application' %>
+    <%= stylesheet_link_tag  'bootstrap.min', 'application' %>
     <%= javascript_include_tag 'jquery','bootstrap.min',  'jquery-ujs', 'application' %>
   </head>
 
   <body>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+<div class="collapse navbar-collapse" id="navbarsExample02">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to 'Home', '/', :class => 'nav-link' %>
+          </li>
+          <li class="nav-item">
+             <%= link_to 'Firewall', '/firewall', :class => 'nav-link' %>
+          </li>
+        </ul>
+       
+      </div>
+</nav>
+
+
     <%= yield %>
   </body>
 </html>

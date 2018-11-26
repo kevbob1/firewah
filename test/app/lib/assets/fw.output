@@ -1,0 +1,55 @@
+ default-action accept
+ description ""
+ rule 1 {
+     action drop
+     description "playstation 4"
+     log disable
+     protocol all
+     source {
+         mac-address bc:60:a7:6c:2d:b5
+     }
+     time {
+         starttime 23:15:00
+         stoptime 05:55:00
+     }
+ }
+ rule 2 {
+     action drop
+     description "matt phone"
+     log disable
+     protocol all
+     source {
+         mac-address a0:39:f7:60:d4:b8
+     }
+     time {
+         starttime 23:15:00
+         stoptime 08:00:00
+     }
+ }
+ rule 3 {
+     action drop
+     description "angus pc"
+     log disable
+     protocol all
+     source {
+         mac-address 00:1d:72:a1:43:cc
+     }
+     time {
+         starttime 23:15:00
+         stoptime 05:55:00
+     }
+ }
+ rule 4 {
+     action drop
+     description "sushi laptop"
+     log disable
+     protocol all
+     source {
+         mac-address c0:cb:38:3b:22:ed
+     }
+     time {
+         starttime 23:15:00
+         stoptime 05:55:00
+     }
+ }
+[edit firewall name LAN_IN]

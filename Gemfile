@@ -37,4 +37,6 @@ gem 'padrino', '0.14.4'
 #   gem 'padrino-' + g, '0.14.4'
 # end
 
+gem 'net-ssh-telnet'
+
 gem 'sinatra-contrib'

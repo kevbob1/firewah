@@ -25,6 +25,9 @@ GEM
     moneta (1.0.0)
     multi_json (1.13.1)
     mustermann (1.0.3)
+    net-ssh (5.0.2)
+    net-ssh-telnet (0.2.1)
+      net-ssh (>= 2.0.1)
     padrino (0.14.4)
       padrino-admin (= 0.14.4)
       padrino-cache (= 0.14.4)
@@ -99,6 +102,7 @@ PLATFORMS
 DEPENDENCIES
   erubi (~> 1.6)
   mocha
+  net-ssh-telnet
   padrino (= 0.14.4)
   puma
   rack-test

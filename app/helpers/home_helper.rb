@@ -6,6 +6,9 @@ module Firewah
       # def simple_helper_method
       # ...
       # end
+      def foo
+        return nil
+      end
     end
 
     helpers HomeHelper

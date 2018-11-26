@@ -6,6 +6,6 @@ class HomeControllerTest < Test::Unit::TestCase
   end
 
   def test_returns_hello_world_text
-    assert_equal "Hello World", last_response.body
+    assert_equal true, last_response.body.include?('Firewah')
   end
 end
