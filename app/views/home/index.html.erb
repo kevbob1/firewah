@@ -1,1 +1,24 @@
-fert
+<p>Current Firewall Configuration</p>
+<div class="container">
+<table border="2" cellpadding="5">
+<tr>
+ <th>position</th>
+ <th>description</th>
+ <th>start time</th>
+ <th>stop time</th>
+ <th>enabled?</th>
+</tr>
+
+<% @rules.each do |rule| %>
+<tr>
+  <td><%= rule.position %></td>
+  <td><%= rule.description %></td>
+  <td><%= rule.start_time %></td>
+  <td><%= rule.stop_time %></td>
+  <td><%= rule.enabled %></td>
+</tr>
+
+<% end %>
+
+</table>
+</div>

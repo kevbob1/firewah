@@ -44,6 +44,7 @@
      description "sushi laptop"
      log disable
      protocol all
+     disabled
      source {
          mac-address c0:cb:38:3b:22:ed
      }
