@@ -40,3 +40,9 @@ gem 'padrino', '0.14.4'
 gem 'net-ssh-telnet'
 
 gem 'sinatra-contrib'
+
+gem 'redis'
+gem 'redis-namespace'
+gem "foreman"
+gem 'resque-scheduler'
+gem 'resque'

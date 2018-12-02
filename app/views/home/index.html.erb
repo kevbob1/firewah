@@ -1,4 +1,5 @@
 <p>Current Firewall Configuration</p>
+
 <div class="container">
 <table border="2" cellpadding="5">
 <tr>
@@ -7,6 +8,7 @@
  <th>start time</th>
  <th>stop time</th>
  <th>enabled?</th>
+ <th>&nbsp;</th>
 </tr>
 
 <% @rules.each do |rule| %>
@@ -16,9 +18,11 @@
   <td><%= rule.start_time %></td>
   <td><%= rule.stop_time %></td>
   <td><%= rule.enabled %></td>
+ <td><%= link_to 'Edit', "/edit/#{rule.position}" %></td>
 </tr>
 
 <% end %>
 
 </table>
 </div>
+<%= link_to "Refresh", "/refresh", :class => "btn btn-primary" %>

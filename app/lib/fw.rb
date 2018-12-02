@@ -11,18 +11,12 @@ class Fw
     def initialize
       @enabled = true
     end
+
   end
 
   def initialize(host, base_config)
     @base_config = base_config
     @host = host
-    # @s = Net::SSH::Telnet.new(
-    #        "Host" => host,
-    #       "Username" => "admin",
-    #       "Password" => "fl0tilla",
-    #       "Prompt" => %r{^admin@padlock},
-    #       "Terminator" => "\r"
-    # )
   end
 
   def connection
@@ -47,6 +41,19 @@ class Fw
       s.close
     end
   end
+
+  def update_rule(rule)
+    s = self.connection
+    begin
+        s.cmd("configure")
+        s.cmd("edit #{@base_config} rule #{rule.position}")
+        s.cmd('exit')
+        return self.class.parse_fw(output)
+    ensure
+      s.close
+    end
+  end
+
 
   def self.parse_fw(input)
     rules = []
@@ -85,11 +92,4 @@ class Fw
     rules
   end
 
-  def f
-    commands.each do |cmd_string|
-      puts s.cmd(cmd_string)
-
-      s.close
-    end
-        end
 end

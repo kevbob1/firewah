@@ -1,0 +1,27 @@
+<div class="container">
+<form action="/update/<%= @rule.position %>" method="post">
+  <%= csrf_token_field %>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" class="form-control" name="description" value="<%= @rule.description %>"/>
+
+  </div>
+  <div class="form-group">
+    <label for="enabled">Enabled</label>
+    <input type="checkbox" class="form-control" name="enabled" <%=@rule.enabled ? "checked=1" : "" %>>
+  </div>
+  <div class="form-group">
+    <label for="start_time">Start Time</label>
+    <input type="text" class="form-control" name="start_time" value="<%= @rule.start_time %>"/>
+
+  </div>
+  <div class="form-group">
+    <label for="stop_time">Stop Time</label>
+    <input type="text" class="form-control" name="stop_time" value="<%= @rule.stop_time %>"/>
+
+  </div>
+  
+
+  <input type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
