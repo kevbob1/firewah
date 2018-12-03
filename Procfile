@@ -1,3 +1,3 @@
 web: bundle exec puma -C config/puma.rb
-worker: bundle exec rake resque:work QUEUE=*
-clock:  bundle exec rake resque:scheduler
+worker1: bundle exec rake queue_listener1
+worker2: bundle exec rake queue_listener2

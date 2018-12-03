@@ -44,5 +44,4 @@ gem 'sinatra-contrib'
 gem 'redis'
 gem 'redis-namespace'
 gem "foreman"
-gem 'resque-scheduler'
-gem 'resque'
+gem "redis-queue"

@@ -49,6 +49,9 @@ Padrino.dependency_paths.unshift Padrino.root('config/initializers/*.rb')
 # These hooks are run before any dependencies are required.
 #
 Padrino.before_load do
+
+  Padrino::Logger::Config[:production][:log_level] = :debug
+  Padrino::Logger::Config[:production][:stream] = :stdout
 end
 
 ##

@@ -40,15 +40,8 @@ Firewah::App.controllers :home do
   end
 
   get :refresh, map: "/refresh" do
-
-    fw = Fw.new('padlock.pd.o', 'firewall name LAN_IN')
-
-    rules = fw.get_rules
-
-    rules.each do |rule| 
-      $REDIS.hset("rules", rule.position, rule.to_yaml)
-    end
-
+    $QUEUE1 << "fert"
+    logger.info "enqueuing request"
     redirect "/"
   end
 
