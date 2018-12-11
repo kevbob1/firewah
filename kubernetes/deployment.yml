@@ -24,3 +24,5 @@ spec:
         env:
           - name: REDIS_HOST
             value: redis.default.svc.cluster.local
+      imagePullSecrets:
+        name: gitlab
