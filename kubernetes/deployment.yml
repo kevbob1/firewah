@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firewah
+  labels:
+    app: firewah
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: firewah
+  template:
+    metadata:
+      labels:
+        app: firewah
+    spec:
+      containers:
+      - name: firewah
+        imagePullPolicy: Never
+        image: firewah:1
+        ports:
+        - name: http
+          containerPort: 3000
+        env:
+          - name: REDIS_HOST
+            value: redis.default.svc.cluster.local

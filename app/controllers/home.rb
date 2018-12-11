@@ -8,9 +8,8 @@ Firewah::App.controllers :home do
     @rules = []
     rule_hash.each do |k,v|
     
-      @rules << YAML.load(v)
+      @rules << Oj::load(v)
     end
-
 
     render 'index'
   end
@@ -18,7 +17,7 @@ Firewah::App.controllers :home do
   get :edit, map: '/edit/:id' do
     position = params[:id]
 
-    @rule = YAML.load($REDIS.hget("rules", position))
+    @rule = Oj::load($REDIS.hget("rules", position))
 
 
     render 'edit'
@@ -27,20 +26,23 @@ Firewah::App.controllers :home do
   post :update, map: '/update/:id' do
     position = params[:id]
 
-    rule = YAML.load($REDIS.hget("rules", position))
+    rule = Oj::load($REDIS.hget("rules", position))
  
     rule.description = params[:description]
     rule.enabled = params.has_key?(:enabled)
     rule.start_time = params[:start_time]
     rule.stop_time = params[:stop_time]
-     
-    $REDIS.hset("rules", position, rule.to_yaml)
+
+    msg = Message.new(:update_rule, rule)
+    $QUEUE1 << Oj::dump(msg)
 
     redirect "/"
   end
 
   get :refresh, map: "/refresh" do
-    $QUEUE1 << "fert"
+    msg = Message.new(:refresh)
+
+    $QUEUE1 << Oj.dump(msg)
     logger.info "enqueuing request"
     redirect "/"
   end

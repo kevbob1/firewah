@@ -47,8 +47,23 @@ class Fw
     begin
         s.cmd("configure")
         s.cmd("edit #{@base_config} rule #{rule.position}")
+        # description 
+        s.cmd("set description \"#{rule.description}\"")
+        # enabled
+        if rule.enabled
+          s.cmd("clear disable")
+        else
+          s.cmd("set disable")
+        end
+        
+        # start
+        s.cmd("set time starttime #{rule.start_time}")
+        # stop
+        s.cmd("set time stoptime #{rule.stop_time}")
+
+        s.cmd("commit")
         s.cmd('exit')
-        return self.class.parse_fw(output)
+        s.cmd('exit')
     ensure
       s.close
     end

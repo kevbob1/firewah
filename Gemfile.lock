@@ -32,6 +32,7 @@ GEM
     net-ssh (5.0.2)
     net-ssh-telnet (0.2.1)
       net-ssh (>= 2.0.1)
+    oj (3.7.4)
     padrino (0.14.4)
       padrino-admin (= 0.14.4)
       padrino-cache (= 0.14.4)
@@ -113,6 +114,7 @@ DEPENDENCIES
   foreman
   mocha
   net-ssh-telnet
+  oj
   padrino (= 0.14.4)
   puma
   rack-test

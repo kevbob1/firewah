@@ -19,6 +19,10 @@ Bundler.require(:default, RACK_ENV)
 # ## Enable logging of source location
 #
 # Padrino::Logger::Config[:development][:source_location] = true
+
+Padrino::Logger::Config[:production][:log_level] = :debug
+Padrino::Logger::Config[:production][:stream] = :stdout
+
 #
 # ## Configure your I18n
 #
@@ -50,8 +54,6 @@ Padrino.dependency_paths.unshift Padrino.root('config/initializers/*.rb')
 #
 Padrino.before_load do
 
-  Padrino::Logger::Config[:production][:log_level] = :debug
-  Padrino::Logger::Config[:production][:stream] = :stdout
 end
 
 ##

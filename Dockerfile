@@ -4,6 +4,11 @@ FROM ruby:2.4-slim
 ENV APP_HOME /myapp
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
+EXPOSE 3000
+ENV RAILS_ENV production
+ENV RACK_ENV production
+# needed for application config
+ENV REDIS_HOST ""
 
 RUN set -x \
     && apt-get update  \
@@ -21,10 +26,5 @@ CMD foreman start -p 3000
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler && bundle install -j "$(getconf _NPROCESSORS_ONLN)" --retry 5 --without development test
 
-EXPOSE 3000
-ENV RAILS_ENV production
-ENV RACK_ENV production
-ENV SECRET_KEY_BASE=11c6e318ae5a254d7c41923d1518801d77ef3084cbe2d59c259e3bd1f01816fe64547f76ddd39df3ba55bb5afc5575326b676c69535828251d3ec1a49a65ce0a
 ADD . $APP_HOME
-RUN cd $APP_HOME
 

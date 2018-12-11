@@ -45,3 +45,4 @@ gem 'redis'
 gem 'redis-namespace'
 gem "foreman"
 gem "redis-queue"
+gem "oj"
