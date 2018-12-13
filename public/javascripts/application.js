@@ -4,6 +4,11 @@
 
 
 function startUpdatePolling() {
-    setInterval(document.location.reload, 3000);
+
+    function reloadPage() {
+        document.location.reload();
+    }
+
+    setInterval(reloadPage, 3000);
 
 }
