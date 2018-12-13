@@ -1,5 +1,9 @@
 // Put your application scripts here
 
-function startRefresh() {
+
+
+
+function startUpdatePolling() {
+    setInterval(document.location.reload, 3000);
 
 }
