@@ -16,8 +16,7 @@ spec:
     spec:
       containers:
       - name: firewah
-        imagePullPolicy: Never
-        image: firewah:1
+        image: gitlab.pd.o:4567/drule/firewah:8
         ports:
         - name: http
           containerPort: 3000
