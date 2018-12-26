@@ -6,6 +6,7 @@ class HomeControllerTest < Test::Unit::TestCase
   end
 
   def test_returns_hello_world_text
+    $REDIS.expects(:hgetall).with("rules").returns([])
     get "/"
     assert_equal true, last_response.body.include?('Firewah')
   end
