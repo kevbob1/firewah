@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
 require 'mocha/api'
 Dir[File.expand_path(File.dirname(__FILE__) + "/../app/helpers/**/*.rb")].each(&method(:require))
 
+
 class Test::Unit::TestCase
   include Mocha::API
   include Rack::Test::Methods
@@ -21,3 +22,5 @@ class Test::Unit::TestCase
     @app ||= Padrino.application
   end
 end
+
+require 'mocha/setup'
