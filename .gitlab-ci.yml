@@ -4,8 +4,9 @@ before_script:
 
 build_image:
    script:
-     - docker build -t my-docker-image .
-     - docker run -rm my-docker-image rake test
+     - env
+     - docker build -t firewah:${stuff} .
+     - docker run --rm firewah:${stuff}rake test
 
 
 # This is a basic example for a gem or script which doesn't use
