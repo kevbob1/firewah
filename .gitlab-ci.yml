@@ -17,6 +17,7 @@ variables:
    # When using dind, it's wise to use the overlayfs driver for
    # improved performance.
    DOCKER_DRIVER: overlay2
+   BUILD_IMAGE_TAG: ${DOCKER_ENV_CI_REGISTRY_IMAGE}:${CI_PIPELINE_ID
 
 services:
    - docker:dind
@@ -26,9 +27,9 @@ before_script:
 
 build_image:
    script:
-     - env
-     - docker build -t firewah:${stuff} .
-     - docker run --rm firewah:${stuff}rake test
+     - docker build -t ${BUILD_IMAGE_TAG} .
+     - docker run --rm ${BUILD_IMAGE_TAG} rake test
+     - docker push ${BUILD_IMAGE_TAG}
 
 
 # This is a basic example for a gem or script which doesn't use

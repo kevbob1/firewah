@@ -25,7 +25,7 @@ RUN set -x \
 CMD foreman start -p 3000
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler && bundle install \ 
-      -j "$(getconf _NPROCESSORS_ONLN)" --retry 5 --without development test
+      -j "$(getconf _NPROCESSORS_ONLN)" --retry 5 --without development
 
 ADD . $APP_HOME
 
