@@ -2,7 +2,7 @@
 
 if !(Padrino.env == :test)
 
-$REDIS_ = Redis.new(host: ENV['REDIS_HOST'] )
+$REDIS_ = Redis.new(host: ENV['REDIS_HOST'], password: "redis" )
 
 $REDIS = Redis::Namespace.new(:fw, :redis => $REDIS_ )
 

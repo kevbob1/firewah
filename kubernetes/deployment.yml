@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: firewah
-        image: gitlab.pd.o:4567/drule/firewah:12
+        image: gitlab.pd.o:4567/drule/firewah:14
         ports:
         - name: http
           containerPort: 3000
