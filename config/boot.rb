@@ -6,6 +6,9 @@ PADRINO_ROOT = File.expand_path('../..', __FILE__) unless defined?(PADRINO_ROOT)
 require 'bundler/setup'
 Bundler.require(:default, RACK_ENV)
 
+require 'active_support'
+require 'active_support/core_ext'
+
 ##
 # ## Enable devel logging
 #

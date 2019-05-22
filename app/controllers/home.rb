@@ -14,6 +14,12 @@ Firewah::App.controllers :home do
     render 'index'
   end
 
+  get :logout, map: '/logout' do
+    session.delete('_login_firewah/app')
+  
+    redirect "/"
+  end
+
   get :edit, map: '/edit/:id' do
     position = params[:id]
 

@@ -1,14 +1,17 @@
 module Firewah
   class App < Padrino::Application
+    set :login_model, :user
+    set :credentials_accessor, :visitor
+    
     register ScssInitializer
     register Padrino::Mailer
     register Padrino::Helpers
+    register Padrino::Login
 
     helpers Sinatra::JSON
 
     enable :sessions
 
-    ##
     # Application configuration options.
     #
     # set :raise_errors, true       # Raise exceptions (will stop application) (default for test)
@@ -44,5 +47,16 @@ module Firewah
     #     render 'errors/500'
     #   end
     #
+    helpers do
+      def authorized?
+        if visitor
+          return true
+        else
+          return false
+        end
+      end
+    end
+  
+
   end
 end

@@ -44,6 +44,7 @@ GEM
     padrino-admin (0.14.4)
       padrino-core (= 0.14.4)
       padrino-helpers (= 0.14.4)
+    padrino-auth (0.0.12)
     padrino-cache (0.14.4)
       moneta (~> 1.0.0)
       padrino-core (= 0.14.4)
@@ -98,6 +99,10 @@ GEM
       rack-protection (= 2.0.4)
       sinatra (= 2.0.4)
       tilt (>= 1.3, < 3)
+    slim (2.1.0)
+      temple (~> 0.6.9)
+      tilt (>= 1.3.3, < 2.1)
+    temple (0.6.10)
     test-unit (3.2.8)
       power_assert
     thor (0.20.3)
@@ -116,6 +121,7 @@ DEPENDENCIES
   net-ssh-telnet
   oj
   padrino (= 0.14.4)
+  padrino-auth
   puma
   rack-test
   rake
@@ -124,6 +130,7 @@ DEPENDENCIES
   redis-queue
   sass
   sinatra-contrib
+  slim (~> 2)
   test-unit
 
 RUBY VERSION

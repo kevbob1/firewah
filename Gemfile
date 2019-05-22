@@ -28,6 +28,8 @@ gem 'rack-test', :require => 'rack/test', :group => 'test'
 
 # Padrino Stable Gem
 gem 'padrino', '0.14.4'
+gem 'padrino-auth'
+gem 'slim', '~> 2'
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
