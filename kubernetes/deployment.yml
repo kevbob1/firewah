@@ -16,13 +16,15 @@ spec:
     spec:
       containers:
       - name: firewah
-        image: gitlab.pd.o:4567/drule/firewah:14
+        image: gitlab.pd.o:4567/drule/firewah:15
         ports:
         - name: http
           containerPort: 3000
         env:
           - name: REDIS_HOST
             value: redis-master.default.svc.cluster.local
+          - name: REDIS_PORT
+            value: 6379
           - name: RACK_ENV
             value: production
       imagePullSecrets:
