@@ -31,5 +31,19 @@
       Padrino.logger.info "queue1: finished #{message.message_type}"
       true
     end
+  end
+
+  desc "copy backup and relace active configuration"
+  task :reset_from_backup => :environment do
+    rule_hash = $REDIS.hgetall("backup_rules")
+
+    rule_hash.each do |k,v|
+      rule = Oj::load(v)
+      msg = Message.new(:update_rule, rule)
+      $QUEUE1 << Oj::dump(msg)
+    end
+
+
+
 
   end

@@ -2,11 +2,16 @@ module Firewah
   class App < Padrino::Application
     set :login_model, :user
     set :credentials_accessor, :visitor
+
+    set :session_secret, 'fcd5c6d03fb88e02f97933961e41d7593072c61c408fd057d1831a1870113f9d'
+    set :protection, :except => :path_traversal
+    set :protect_from_csrf, true
     
     register ScssInitializer
     register Padrino::Mailer
     register Padrino::Helpers
     register Padrino::Login
+    register Padrino::WebSockets
 
     helpers Sinatra::JSON
 
@@ -57,6 +62,12 @@ module Firewah
       end
     end
   
+    websocket :channel do
+      on :ping do |message|
+        send_message(:ping, session['websocket_user'], {pong: true, data: message})
+        broadcast(:ping, {pong: true, data: message, broadcast: true})
+      end
+    end
 
   end
 end

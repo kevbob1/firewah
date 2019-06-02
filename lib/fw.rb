@@ -8,6 +8,10 @@ class Fw
     attr_accessor :start_time
     attr_accessor :stop_time
 
+    def logger
+      Padrino.logger
+    end
+
     def initialize
       @enabled = true
     end
@@ -29,14 +33,23 @@ class Fw
     return s
   end
 
+  def log_cmd(s, command)
+    logger.debug "> #{command}"
+    response = s.cmd(command)
+    logger.debug "< #{response}"
+    return response
+  end
+
   def get_rules
     s = self.connection
     begin
-        s.cmd("configure")
-        s.cmd("edit #{@base_config}")
-        output = s.cmd("show|tee")
-        s.cmd('exit')
-        return self.class.parse_fw(output)
+        log_cmd(s,"configure")
+        log_cmd(s,"edit #{@base_config}")
+        output = log_cmd(s,"show|tee")
+        log_cmd(s,'exit')
+        v = self.class.parse_fw(output) 
+        logger.debug v.inspect
+        return v
     ensure
       s.close
     end
@@ -45,25 +58,26 @@ class Fw
   def update_rule(rule)
     s = self.connection
     begin
-        s.cmd("configure")
-        s.cmd("edit #{@base_config} rule #{rule.position}")
+      log_cmd(s,"configure")
+      log_cmd(s, "edit #{@base_config} rule #{rule.position}")
         # description 
-        s.cmd("set description \"#{rule.description}\"")
+        log_cmd(s, "set description \"#{rule.description}\"")
         # enabled
         if rule.enabled
-          s.cmd("clear disable")
+          log_cmd(s, "delete disable")
         else
-          s.cmd("set disable")
+          log_cmd(s, "set disable")
         end
         
         # start
-        s.cmd("set time starttime #{rule.start_time}")
+        log_cmd(s, "set time starttime #{rule.start_time}")
         # stop
-        s.cmd("set time stoptime #{rule.stop_time}")
+        log_cmd(s, "set time stoptime #{rule.stop_time}")
 
-        s.cmd("commit")
-        s.cmd('exit')
-        s.cmd('exit')
+        log_cmd(s, "commit")
+        log_cmd(s, "save")
+        log_cmd(s, 'exit')
+        log_cmd(s, 'exit')
     ensure
       s.close
     end

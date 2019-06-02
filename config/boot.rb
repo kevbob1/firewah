@@ -22,6 +22,7 @@ require 'active_support/core_ext'
 # ## Enable logging of source location
 #
 # Padrino::Logger::Config[:development][:source_location] = true
+Padrino::Logger::Config[:development][:source_location] = true
 
 Padrino::Logger::Config[:production][:log_level] = :debug
 Padrino::Logger::Config[:production][:stream] = :stdout

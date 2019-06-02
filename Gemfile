@@ -11,9 +11,6 @@ ruby '2.4.6'
 # gem 'trinidad', :platform => 'jruby'
 gem 'puma'
 
-# Optional JSON codec (faster performance)
-# gem 'oj'
-
 # Project requirements
 gem 'rake'
 
@@ -48,3 +45,7 @@ gem 'redis-namespace'
 gem "foreman"
 gem "redis-queue"
 gem "oj"
+
+gem 'padrino-websockets'
+gem 'faye-websocket'
+

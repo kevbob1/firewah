@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 Firewah::App.controllers :home do
   get :index, map: '/' do
@@ -12,6 +11,17 @@ Firewah::App.controllers :home do
     end
 
     render 'index'
+  end
+
+  get :save_backup, map: '/save_backup' do
+    rule_hash = $REDIS.hgetall("rules")
+  
+    $REDIS.del("backup_rules")
+    rule_hash.each do |k,v|
+      $REDIS.hset("backup_rules", k, v)
+    end
+  
+    redirect "/"
   end
 
   get :logout, map: '/logout' do
