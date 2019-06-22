@@ -61,11 +61,12 @@ module Firewah
         end
       end
     end
-  
-    websocket :channel do
-      on :ping do |message|
-        send_message(:ping, session['websocket_user'], {pong: true, data: message})
-        broadcast(:ping, {pong: true, data: message, broadcast: true})
+
+    websocket :notifier do
+      on :thing do |message|
+        logger.info "ws message received: #{message.inspect}"
+        send_message(:notifier, session['websocket_user'], {pong: true, data: message})
+        broadcast(:notifier, {pong: true, data: message, broadcast: true})
       end
     end
 

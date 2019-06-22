@@ -28,13 +28,6 @@ gem 'padrino', '0.14.4'
 gem 'padrino-auth'
 gem 'slim', '~> 2'
 
-# Or Padrino Edge
-# gem 'padrino', :github => 'padrino/padrino-framework'
-
-# Or Individual Gems
-# %w(core support gen helpers cache mailer admin).each do |g|
-#   gem 'padrino-' + g, '0.14.4'
-# end
 
 gem 'net-ssh-telnet'
 
@@ -46,6 +39,6 @@ gem "foreman"
 gem "redis-queue"
 gem "oj"
 
-gem 'padrino-websockets'
+gem 'padrino-websockets', path: '/home/kev/git/padrino-websockets'
 gem 'faye-websocket'
 
