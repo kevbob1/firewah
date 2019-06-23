@@ -46,6 +46,6 @@ gem "foreman"
 gem "redis-queue"
 gem "oj"
 
-gem 'padrino-websockets'
+gem 'padrino-websockets', path: "/home/kev/git/padrino-websockets"
 gem 'faye-websocket'
 
