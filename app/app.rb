@@ -6,6 +6,7 @@ module Firewah
     set :session_secret, 'fcd5c6d03fb88e02f97933961e41d7593072c61c408fd057d1831a1870113f9d'
     set :protection, :except => :path_traversal
     set :protect_from_csrf, true
+    set :websockets_pub_sub, RedisPubSub.new($REDIS_PUBSUB, $REDIS, "ws")
     
     register ScssInitializer
     register Padrino::Mailer
