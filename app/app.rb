@@ -17,7 +17,6 @@ module Firewah
 
     enable :sessions
 
-    # Application configuration options.
     #
     # set :raise_errors, true       # Raise exceptions (will stop application) (default for test)
     # set :dump_errors, true        # Exception backtraces are written to STDERR (default for production/development)
@@ -32,25 +31,6 @@ module Firewah
     # layout  :my_layout            # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
     #
 
-    ##
-    # You can configure for a specified environment like:
-    #
-    #   configure :development do
-    #     set :foo, :bar
-    #     disable :asset_stamp # no asset timestamping for dev
-    #   end
-    #
-
-    ##
-    # You can manage errors like:
-    #
-    #   error 404 do
-    #     render 'errors/404'
-    #   end
-    #
-    #   error 500 do
-    #     render 'errors/500'
-    #   end
     #
     helpers do
       def authorized?
@@ -61,12 +41,11 @@ module Firewah
         end
       end
     end
-
-    websocket :notifier do
-      on :thing do |message|
-        logger.info "ws message received: #{message.inspect}"
-        send_message(:notifier, session['websocket_user'], {pong: true, data: message})
-        broadcast(:notifier, {pong: true, data: message, broadcast: true})
+  
+    websocket :channel do
+      on :ping do |message|
+     #   send_message(:channel, session['websocket_user'], {pong: true, data: message})
+        broadcast(:channel, {"message" => "ping message received", "severity" => "success"})
       end
     end
 
