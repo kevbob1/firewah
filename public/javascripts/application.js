@@ -3,7 +3,7 @@
 
 var socket;
 
-var wsurl = window.location.href.replace(/^http(s?:\/\/.*)\/.*$/, 'ws$1/channel')
+var wsurl = window.location.href.replace(/^http(s?:\/\/[^\/]+)\/.*$/, 'ws$1/channel');
 
 $(document).ready(() => {
 
@@ -28,6 +28,9 @@ $(document).ready(() => {
         console.log("ws message: " + event.data);
         var data = JSON.parse(event.data);
         $.notify(data.message, data.severity);
+        if (data.refresh) {
+            setTimeout(() => { window.location.reload() }, 2000);
+        }
     });
 
     $('#ping_button').on('click', (e) => {

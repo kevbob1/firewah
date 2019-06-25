@@ -20,12 +20,20 @@
           $REDIS.hset("rules", rule.position, Oj::dump(rule))
         end
 
+        Padrino::WebSockets::BaseEventManager.broadcast(
+          :channel, {"message" => "firewall data refreshed", "severity" => "success", "refresh" => true}
+          )
+
+
       when :update_rule
         rule = message.body
         fw = Fw.new('padlock.pd.o', 'firewall name LAN_IN')
         fw.update_rule(rule)
 
         $REDIS.hset("rules", rule.position, Oj::dump(rule))
+        Padrino::WebSockets::BaseEventManager.broadcast(
+          :channel, {"message" => "firewall rule #{rule.position} updated", "severity" => "success", "refresh" => true}
+          )
 
       end
       Padrino.logger.info "queue1: finished #{message.message_type}"
