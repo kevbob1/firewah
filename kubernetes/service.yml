@@ -4,9 +4,13 @@ metadata:
   labels:
     app: firewah
   name: firewah
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: firewah.pd.o.
+    external-dns.alpha.kubernetes.io/ttl: "360"
 spec:
   selector:
     app: firewah
   ports:
-  - port: 3000
+  - port: 80
     targetPort: 3000
+  type: LoadBalancer
