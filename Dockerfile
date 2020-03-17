@@ -1,4 +1,4 @@
-FROM ruby:2.4-slim
+FROM ruby:2.4.6-slim
 
 # start setting up the app
 ENV APP_HOME /myapp
